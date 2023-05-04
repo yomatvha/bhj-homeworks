@@ -25,6 +25,14 @@ class Game {
       При неправильном вводе символа - this.fail();
       DOM-элемент текущего символа находится в свойстве this.currentSymbol.
      */
+    
+    document.addEventListener('keyup', (event) => {
+      if (String.fromCharCode(event.keyCode).toLowerCase() === this.currentSymbol.textContent.toLowerCase()) {
+        this.success();
+      } else if (event.keyCode !== 16) { // чтобы не реагировать на клавишу shift, любая другая считается поражением
+        this.fail();
+      }
+    });
   }
 
   success() {
@@ -45,7 +53,7 @@ class Game {
   }
 
   fail() {
-    if (++this.lossElement.textContent === 5) {
+    if (++this.lossElement.textContent === 3) {  // исправил 5 на 3, т.к. в условии задачи сказано, что игра заканчивается после 3 поражений
       alert('Вы проиграли!');
       this.reset();
     }

@@ -4,9 +4,9 @@ let form = document.getElementById('tasks__form');
 let input = document.getElementById('task__input');
 let taskIndex = 0;
 
-form.addEventListener("submit", () => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (input.value !== "") {
+  if (input.value.trim() !== "") {
     let taskList = document.getElementById('tasks__list');
     taskList.insertAdjacentHTML("beforeend",
       '<div class="task" id="task' + taskIndex + '"><div class="task__title">'
@@ -22,5 +22,6 @@ form.addEventListener("submit", () => {
     input.value = "";
   } else {
     alert('Название задачи должно быть введено!');
+    input.value = "";
   }
 })

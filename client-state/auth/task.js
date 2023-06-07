@@ -1,9 +1,10 @@
 "use strict"
 
-const signInButton = document.getElementById('signin__btn'); 
-const signInForm = document.getElementById('signin__form'); 
+const signInButton = document.getElementById('signin__btn');
+const signInForm = document.getElementById('signin__form');
 const welcome = document.getElementById('welcome');
 const userId = document.getElementById('user_id');
+const signIn = document.getElementById('signin');
 
 if (localStorage.getItem('user')) {
   userId.textContent = localStorage.getItem('user');
@@ -20,6 +21,7 @@ if (localStorage.getItem('user')) {
           userId.textContent = response.user_id;
           localStorage.setItem('user', response.user_id);
           welcome.classList.add('welcome_active');
+          signIn.classList.remove('signin_active');
         } else {
           alert("Неверный логин/пароль");
         }

@@ -9,6 +9,7 @@ const signIn = document.getElementById('signin');
 if (localStorage.getItem('user')) {
   userId.textContent = localStorage.getItem('user');
   welcome.classList.add('welcome_active');
+  signIn.classList.remove('signin_active');
 } else {
   document.forms.signin__form.addEventListener("submit", (event) => {
     event.preventDefault();
